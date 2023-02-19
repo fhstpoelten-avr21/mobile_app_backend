@@ -23,7 +23,7 @@ import { MulterModule } from '@nestjs/platform-express';
     MulterModule.register({ dest: './uploads' }),
     QuizModule,
     UserModule,
-    AuthModule
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

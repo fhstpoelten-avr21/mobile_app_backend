@@ -8,8 +8,8 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('My manager API')
-    .setDescription('My API description')
+    .setTitle('Mobile-App Backend')
+    .setDescription('Mobile-App API description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

@@ -1,16 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { UserRegisterRequestDto } from './dto/user-register.req.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UserService {
-  async doUserRegistration(
-    userRegister: UserRegisterRequestDto,
-  ): Promise<User> {
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+  ) {}
+
+  async doUserRegistration(createUser: CreateUserDto): Promise<User> {
     const user = new User();
-    user.name = userRegister.name;
-    user.email = userRegister.email;
-    user.password = userRegister.password;
+    user.name = createUser.name;
+    user.email = createUser.email;
+    user.password = createUser.password;
 
     return await user.save();
   }
@@ -21,5 +27,22 @@ export class UserService {
 
   async getUserById(id: number): Promise<User | undefined> {
     return User.findOne({ where: { id } });
+  }
+
+  async findAll(): Promise<User[]> {
+    return this.userRepository.find();
+  }
+
+  async findOne(id: number): Promise<User> {
+    return this.userRepository.findOne({ id });
+  }
+
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    try {
+      await this.userRepository.update(id, updateUserDto);
+      return this.userRepository.findOne({ id });
+    } catch (error) {
+      return error;
+    }
   }
 }
