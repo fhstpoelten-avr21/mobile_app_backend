@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+
+  # DB (MYSQL)
+  db:
+    container_name: mobile_db
+    image: mariadb:latest
+    volumes:
+      # create persistent docker_nestjs volume
+      - ./mariadb-data/data:/var/lib/mysql
+      # mount configuration
+      - ./mariadb:/etc/mysql/conf.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mobile_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - "3306:3306"
+    restart: on-failure
+    networks:
+      - fhstpoelten
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - fhstpoelten
+
+#Docker Networks
+networks:
+  fhstpoelten:
+    driver: bridge

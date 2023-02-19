@@ -1,0 +1,7 @@
+.idea
+.DS_STORE
+./nginx/ssl/*
+node_modules
+mongodb-data
+mysql
+mysql-data
