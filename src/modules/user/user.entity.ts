@@ -31,7 +31,7 @@ export class User extends BaseEntity {
   email: string;
 
   @ApiProperty({ description: 'Hashed user password' })
-  @Column({ select: false })
+  @Column()
   password: string;
 
   @Column({ type: 'enum', enum: UserRoles, default: UserRoles.MEMBER })

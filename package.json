@@ -1,8 +1,9 @@
 {
   "name": "backend",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "My first nestjs backend application",
+  "author": "Christoph Murauer",
+  "homepage": "https://christophmurauer.com/",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
