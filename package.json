@@ -21,13 +21,13 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -f src/config/typeorm.config-migrations.ts",
-    "migration:generate": "npm run typeorm:cli -- migration:generate -d src/database/migrations -n",
-    "migration:create": "npm run typeorm:cli -- migration:create -d src/database/migrations -n",
-    "migration:run": "yarn run typeorm:cli -- migration:run",
-    "migration:revert": "npm run typeorm:cli -- migration:revert",
+    "migration:generate": "yarn typeorm:cli -- migration:generate -d src/database/migrations -n",
+    "migration:create": "yarn typeorm:cli -- migration:create -d src/database/migrations -n",
+    "migration:run": "yarn typeorm:cli -- migration:run",
+    "migration:revert": "yarn typeorm:cli -- migration:revert",
     "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config -n src/config/typeorm.config-migrations.ts",
     "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n src/config/typeorm.config-migrations.ts",
-    "db:refresh": "npm run typeorm:cli schema:drop && yarn run migration:run && yarn run seed:run"
+    "db:refresh": "yarn typeorm:cli schema:drop && yarn migration:run && yarn seed:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.4.4",
