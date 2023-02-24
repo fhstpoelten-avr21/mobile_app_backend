@@ -7,7 +7,6 @@ import { quizSampleData } from '../data/quiz.data';
 
 export class SetupData implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
-    console.log('quizSampleData', quizSampleData);
     await getManager().query('SET foreign_key_checks = 0');
     await getManager().query('TRUNCATE quizes');
     await getManager().query('TRUNCATE questions');
