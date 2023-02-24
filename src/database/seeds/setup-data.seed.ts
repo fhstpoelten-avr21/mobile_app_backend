@@ -9,8 +9,8 @@ export class SetupData implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
     await getManager().query('SET foreign_key_checks = 0');
     await getManager().query('TRUNCATE quizes');
-    await getManager().query('TRUNCATE questions');
-    await getManager().query('TRUNCATE options');
+    // await getManager().query('TRUNCATE questions');
+    // await getManager().query('TRUNCATE options');
     await getManager().query('SET foreign_key_checks = 1');
 
     for (let i = 0; i < quizSampleData.length; i++) {

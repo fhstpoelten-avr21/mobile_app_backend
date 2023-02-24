@@ -4,12 +4,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { ApiProperty } from '@nestjs/swagger';
 import { UserRoles } from './enums/user.enum';
+import { Todo } from '../todos/todo.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
@@ -50,4 +52,7 @@ export class User extends BaseEntity {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(password || this.password, salt);
   }
+
+  @OneToMany(() => Todo, (todo) => todo.user)
+  todos: Todo[];
 }

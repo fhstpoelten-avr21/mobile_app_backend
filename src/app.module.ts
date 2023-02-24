@@ -9,6 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { typeOrmAsyncConfig } from './config/typeorm.config';
+import { TodosModule } from './modules/todos/todos.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -24,6 +25,7 @@ import { MulterModule } from '@nestjs/platform-express';
     QuizModule,
     UserModule,
     AuthModule,
+    TodosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
