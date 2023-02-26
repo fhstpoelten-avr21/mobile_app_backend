@@ -58,5 +58,12 @@ yarn test:e2e
 yarn test:cov
 ```
 
+## FAQ
+### Nestjs Error: Cannot find module './app.controller' or similar
+```bash
+# Rebuild application
+yarn build
+```
+
 ## License
 [MIT licensed](LICENSE)
