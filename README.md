@@ -23,9 +23,13 @@
 
 ## Installation
 1. **Environment:** Copy ```.env.example```, rename it to ```.env``` and fill in your configuration
+<br><br>
 2. **Dependencies:** Install packages - ```yarn```
+   <br><br>
 3. **Docker:** Build and run Docker containers - ```cd docker && docker-compose up -d```
+   <br><br>
 4. **Migrate:** Build the DB structure - ```yarn migration:run```
+   <br><br>
 5. **Seed:** Fill the DB with default data - ```yarn seed:run```
 
 
@@ -44,6 +48,11 @@ yarn start:prod
 # Check out the API documentation in your browser
 localhost:3000/api
 ```
+
+## Architecture
+
+![logo](architecture.jpeg)
+
 
 ## Test
 

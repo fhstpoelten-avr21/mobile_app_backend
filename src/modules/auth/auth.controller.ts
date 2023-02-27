@@ -51,14 +51,12 @@ export class AuthController {
       expirationDate.getDate() + parseInt(process.env.TOKEN_EXPIRATION_DAYS),
     );
     const token = this.authService.generateToken(request.user);
-    const response = {
+    return {
       id: request.user.id,
       email: request.user.email,
       token: token.access_token,
       tokenExpirationDate: expirationDate,
     };
-
-    return response;
   }
 
   @ApiBearerAuth()
