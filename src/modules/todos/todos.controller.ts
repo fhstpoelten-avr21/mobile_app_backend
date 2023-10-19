@@ -23,27 +23,27 @@ export class TodosController {
     description: 'Created todo',
     type: Todo,
   })
-  create(@Body() createTodoDto: CreateTodoDto) {
+  async create(@Body() createTodoDto: CreateTodoDto) {
     return this.todosService.create(createTodoDto);
   }
 
   @Get()
-  findAll() {
+  async findAll(): Promise<Todo[]> {
     return this.todosService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string): Promise<Todo> {
     return this.todosService.findOne(+id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+  async update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
     return this.todosService.update(+id, updateTodoDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.todosService.remove(+id);
   }
 }

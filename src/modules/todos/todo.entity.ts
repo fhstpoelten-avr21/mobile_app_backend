@@ -24,4 +24,11 @@ export class Todo extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.todos)
   user: User;
+
+  constructor(title: string, completed: boolean, user?: User) {
+    super();
+    this.title = title || '';
+    this.completed = completed || false;
+    this.user = user || null;
+  }
 }
