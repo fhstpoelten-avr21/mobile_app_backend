@@ -8,8 +8,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 @Injectable()
 export class TodosService {
   constructor(
-    @InjectRepository(Todo)
-    private todoRepository: Repository<Todo>,
+    @InjectRepository(Todo) private todoRepository: Repository<Todo>,
   ) {}
 
   async create(createTodoDto: CreateTodoDto): Promise<Todo> {
